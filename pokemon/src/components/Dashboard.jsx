@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import PokemonCard from './PokemonCard.jsx'
+import { usePokemon } from '../context/PokemonContext.jsx'
 
 const Wrap = styled.div`
   width: 100%;
@@ -14,6 +15,7 @@ const Wrap = styled.div`
 const Title = styled.h3`
   margin-bottom: 15px;
   color: red;
+  text-align:center;
 `;
 
 const Slots = styled.div`
@@ -47,7 +49,8 @@ const EmptySlot = styled.div`
 
 const POKEBALL_URL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png';
 
-function Dashboard({ selected, removePokemon }) {
+function Dashboard() {
+  const { selected, removePokemon } = usePokemon();
   const slots = [...selected, ...Array(6 - selected.length).fill()];
 
   return (

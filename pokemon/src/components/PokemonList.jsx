@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import PokemonCard from './PokemonCard.jsx'
+import { usePokemon } from '../context/PokemonContext.jsx';
 
 const Wrap = styled.div`
   width:100%;
@@ -15,7 +16,10 @@ const Grid = styled.div`
   gap: 16px;
 `;
 
-function PokemonList({ data, selectedIds, addPokemon }) {
+function PokemonList({ data }) {
+  const { selected, addPokemon } = usePokemon();
+  const selectedIds = selected.map(p => p.id);
+
   return (
     <Wrap>
       <Grid>
@@ -29,7 +33,7 @@ function PokemonList({ data, selectedIds, addPokemon }) {
         ))}
       </Grid>
     </Wrap>
-  )
+  );
 }
 
 export default PokemonList

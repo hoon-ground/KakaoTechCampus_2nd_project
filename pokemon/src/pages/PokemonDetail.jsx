@@ -1,6 +1,7 @@
 import { useSearchParams, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import MOCK_DATA from '../data/mock.js'
+import { usePokemon } from '../context/PokemonContext.jsx';
 
 const PageWrapper = styled.div`
   display: flex;
@@ -48,11 +49,14 @@ const Btn = styled.button`
 `;
 
 
-function PokemonDetail({ selected, addPokemon, removePokemon }) {
+function PokemonDetail() {
   const [params] = useSearchParams();
   const nav = useNavigate();
   const id = Number(params.get('id'));
   const poke = MOCK_DATA.find(p => p.id === id);
+
+
+  const { selected, addPokemon, removePokemon } = usePokemon();
   const isSelected = selected.some(p => p.id === id);
   const isFull = !isSelected && (selected.length >= 6);
 

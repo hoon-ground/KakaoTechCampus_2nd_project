@@ -9,17 +9,13 @@ const Layout = styled.div`
   padding: 20px;
 `;
 
-function Dex({ selected, addPokemon, removePokemon }) {
+function Dex() {
   return (
     <Layout>
-      <Dashboard selected={selected} removePokemon={removePokemon} />
-      <PokemonList
-        data={MOCK_DATA}
-        selectedIds={selected.map(p => p.id)}
-        addPokemon={addPokemon}
-      />
+      <Dashboard />
+      <PokemonList data={MOCK_DATA} />
     </Layout>
-  )
+  );
 }
 
-export default Dex
+export default Dex;
